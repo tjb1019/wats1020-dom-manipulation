@@ -40,7 +40,15 @@ $( document ).ready(function() {
     //      3. Toggle visibility of all the elements within that parent with the class `details`.
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
-
+	$('.view-details').on('click', function(event) {
+		
+		var target = event.target;
+		$(target).parent().parent().find('.details').toggle();
+		
+		$(target).html()
+		
+	});
+	
     // TODO: Create a function that listens for clicks on the voting buttons and
     // looks at the `data-vote` attribute on each button to see what was voted for,
     // then determines the updated vote breakdown to adjust the progress bars.
