@@ -22,7 +22,14 @@ $( document ).ready(function() {
     //      2. Fill the user's first and last name into `div.user-info`.
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
-
+	$('#login-button').on('click', function() {
+		$('#login-form').hide();
+		$('div.user-info').html("Welcome, " + userInfo.firstName + " " + userInfo.lastName + "!");
+		$('div.user-info').css({
+			marginTop: '10px'
+		});
+		$('div.user-info').fadeIn(1000);
+	});
 
     // TODO: Create a function to listen for clicks on all the "View Details"
     // buttons so that when a user clicks a "View Details" button they see
