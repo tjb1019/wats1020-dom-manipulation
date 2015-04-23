@@ -40,12 +40,19 @@ $( document ).ready(function() {
     //      3. Toggle visibility of all the elements within that parent with the class `details`.
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
-	$('.view-details').on('click', function(event) {
+	$('a.view-details').on('click', function(event) {
 		
-		var target = event.target;
-		$(target).parent().parent().find('.details').toggle();
+		// Toggle content
+		var target = $(this);
+		target.parent().parent().find('.details').toggle();
 		
-		$(target).html()
+		// Change Show/Hide text on click
+  		if (target.text() == target.data("text-swap")) {
+    		target.text(target.data("text-original"));
+  		}else{
+    		target.data("text-original", target.text());
+    		target.text(target.data("text-swap"));
+  		}
 		
 	});
 	
@@ -58,5 +65,24 @@ $( document ).ready(function() {
     //      3. Increment the counter for whichever vote talley is affected.
     //      4. Determine the respective percentages (out of 100) for each progress bar.
     //      5. Modify the `width` attribute on each progress bar to set the updated percentage.
-
+	$('button.vote').on('click', function () {
+		var userVote = $(this).data('vote');
+		
+		// Tally the votes and update counters
+		if (userVote == "great") {
+			voteCounts.great++;
+			voteCounts.total++;
+		}
+		else if (userVote == "greatest") {
+			voteCounts.greatest++;
+			voteCounts.total++;
+		}
+		
+		// Calculate percentages and update progress bars
+		var greatPercent = (voteCounts.great / voteCounts.total) * 100;
+			$('.great-progress').attr("style", "width: " + greatPercent + "%");
+		
+		var greatestPercent = (voteCounts.greatest / voteCounts.total) * 100;
+			$('.greatest-progress').attr("style", "width: " + greatestPercent + "%");
+	});
 });
