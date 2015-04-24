@@ -23,7 +23,11 @@ $( document ).ready(function() {
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
 	$('#login-button').on('click', function() {
+		
+		// Hide login forms
 		$('#login-form').hide();
+		
+		// Generate greeting and populate user-info
 		$('div.user-info').html("Welcome, " + userInfo.firstName + " " + userInfo.lastName + "!");
 		$('div.user-info').css({
 			marginTop: '10px'
@@ -53,7 +57,6 @@ $( document ).ready(function() {
     		target.data("text-original", target.text());
     		target.text(target.data("text-swap"));
   		}
-		
 	});
 	
     // TODO: Create a function that listens for clicks on the voting buttons and
@@ -66,6 +69,7 @@ $( document ).ready(function() {
     //      4. Determine the respective percentages (out of 100) for each progress bar.
     //      5. Modify the `width` attribute on each progress bar to set the updated percentage.
 	$('button.vote').on('click', function () {
+		
 		var userVote = $(this).data('vote');
 		
 		// Tally the votes and update counters
