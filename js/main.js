@@ -28,11 +28,12 @@ $( document ).ready(function() {
 		$('#login-form').hide();
 		
 		// Generate greeting and populate user-info
-		$('div.user-info').html("Welcome, " + userInfo.firstName + " " + userInfo.lastName + "!");
-		$('div.user-info').css({
+		var user = $('div.user-info');
+		user.text("Welcome, " + userInfo.firstName + " " + userInfo.lastName + "!");
+		user.css({
 			marginTop: '10px'
 		});
-		$('div.user-info').fadeIn(1000);
+		user.fadeIn(1000);
 	});
 
     // TODO: Create a function to listen for clicks on all the "View Details"
